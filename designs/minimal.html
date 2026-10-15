@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>حمایت</title>
+<meta name="description" content="Support / حمایت" />
+<meta name="theme-color" content="#FAF8F5" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script>
+  /* ============================================================
+     ⚙️ تنظیمات — فقط این بخش را ویرایش کنید | EDIT ONLY THIS PART
+     ============================================================ */
+  window.SITE_CONFIG = {
+    name: { fa: "V", en: "V" },
+    headline: {
+      fa: "می‌سازم، یاد می‌گیرم و به اشتراک می‌گذارم.",
+      en: "I build, learn, and share."
+    },
+    tagline: {
+      fa: "حتی کوچیک‌ترین حمایت تو برام یک دنیا ارزش داره و به اشتیاقم برای ادامه‌ی مسیر و ساخت پروژه‌های جدید و رایگان انرژی میده.",
+      en: "Even the smallest support from you means the world to me and fuels my passion to keep going and build new, free projects."
+    },
+    donateLink: "https://daramet.com/Idea_atmosphere",                       // لینک دونیت
+    donateAddress: "Soon"      // آدرس دونیت
+  };
+
+  /* Apply theme & language before paint (no flicker) */
+  (function () {
+    var d = document.documentElement;
+    var t = localStorage.getItem("theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    d.setAttribute("data-theme", t);
+    var p = new URLSearchParams(location.search).get("lang");
+    var l = (p === "fa" || p === "en") ? p : (localStorage.getItem("lang") ||
+      ((navigator.language || "en").toLowerCase().indexOf("fa") === 0 ? "fa" : "en"));
+    d.lang = l; d.dir = l === "fa" ? "rtl" : "ltr";
+  })();
+</script>
+
+<style>
+  :root {
+    --bg: #F2F3F5; --tile: #FFFFFF; --tile-2: #F7F8FA; --text: #0F1115; --muted: #6B7280; --line: rgba(15,17,21,.07);
+    --accent: #3B6CF6; --accent-2: #7C5CFA; --on-accent: #fff; --ok: #22A06B;
+    --shadow: 0 1px 2px rgba(15,17,21,.04), 0 12px 32px -18px rgba(15,17,21,.18);
+    --ease: cubic-bezier(.2, .8, .2, 1); --maxw: 1040px; --r: 28px;
+  }
+  [data-theme="dark"] {
+    --bg: #0B0C0F; --tile: #16181D; --tile-2: #1C1F25; --text: #F3F4F6; --muted: #9AA1AD; --line: rgba(255,255,255,.07);
+    --accent: #6B8CFF; --accent-2: #9B83FF; --ok: #4ACB8E;
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 12px 32px -18px rgba(0,0,0,.8);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { min-height: 100vh; display: flex; flex-direction: column; background: var(--bg); color: var(--text);
+    font: 400 16px/1.6 "Inter", "Vazirmatn", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased;
+    transition: background-color .4s var(--ease), color .4s var(--ease); }
+  html[lang="fa"] body { font-family: "Vazirmatn", "Inter", system-ui, sans-serif; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 10px; }
+
+  header { width: 100%; max-width: calc(var(--maxw) + 48px); margin: 0 auto; padding: 22px 24px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; text-decoration: none; color: var(--text); }
+  .mark { width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    transition: transform .5s var(--ease), border-radius .5s var(--ease); }
+  .brand:hover .mark { transform: rotate(90deg); border-radius: 50%; }
+  .controls { display: flex; gap: 8px; }
+  .round { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--tile);
+    box-shadow: var(--shadow); font: 700 12.5px/1 "Inter", sans-serif; letter-spacing: .04em;
+    transition: transform .3s var(--ease), background-color .4s; }
+  .round:hover { transform: translateY(-2px); }
+  .round:active { transform: scale(.92); }
+  html[lang="en"] #langBtn .lbl { font-family: "Vazirmatn", sans-serif; font-size: 14px; font-weight: 600; }
+  #langBtn .lbl { display: inline-block; transition: transform .35s var(--ease), opacity .2s; }
+  #langBtn.flip .lbl { transform: translateY(-8px); opacity: 0; }
+  .ti { width: 18px; height: 18px; overflow: visible; }
+  .ti .rays { transform-origin: 12px 12px; transition: transform .5s var(--ease), opacity .3s; }
+  .ti .disc { transition: r .4s var(--ease); }
+  .ti .bite { transition: transform .45s var(--ease); }
+  [data-theme="dark"] .ti .rays { transform: rotate(45deg) scale(.5); opacity: 0; }
+  [data-theme="dark"] .ti .disc { r: 8; }
+  [data-theme="dark"] .ti .bite { transform: translate(-11px, 7px); }
+
+  main { flex: 1; width: 100%; max-width: calc(var(--maxw) + 48px); margin: 0 auto; padding: 0 24px; }
+  .page { display: none; padding: 24px 0 56px; }
+  .page.active { display: block; }
+  .page.in .r { animation: up .8s var(--ease) both; animation-delay: calc(var(--i, 0) * 70ms); }
+  .page.out { animation: out .25s ease both; }
+  @keyframes up { from { opacity: 0; transform: translateY(20px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes out { to { opacity: 0; transform: scale(.98); } }
+
+  /* ---------- Bento grid ---------- */
+  .bento { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(150px, auto);
+    grid-template-areas: "intro intro donate" "intro intro donate" "status projects social"; }
+  .tile { position: relative; overflow: hidden; border-radius: var(--r); background: var(--tile); padding: 26px;
+    box-shadow: var(--shadow); transition: transform .5s var(--ease), background-color .4s, box-shadow .5s var(--ease); }
+  .tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
+    background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%); }
+  .tile:hover::after { opacity: 1; }
+  .intro { grid-area: intro; display: flex; flex-direction: column; justify-content: space-between; min-height: 330px; }
+  .avatar { width: 64px; height: 64px; border-radius: 20px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: grid; place-items: center; color: #fff; font-size: 28px; animation: bob 6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-5px) rotate(-4deg); } }
+  .hello { color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+  .intro h1 { font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; letter-spacing: -.035em; font-weight: 800; margin-bottom: 14px; text-wrap: balance; }
+  html[lang="fa"] .intro h1 { letter-spacing: 0; line-height: 1.35; }
+  .intro p { color: var(--muted); max-width: 32em; }
+
+  .donate-tile { grid-area: donate; cursor: pointer; text-align: start; color: var(--on-accent);
+    background: linear-gradient(150deg, var(--accent), var(--accent-2)); display: flex; flex-direction: column; justify-content: space-between; }
+  .donate-tile:hover { transform: translateY(-4px) scale(1.01); }
+  .donate-tile:active { transform: scale(.98); }
+  .donate-tile::before { content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%; inset-inline-end: -90px; top: -90px;
+    background: rgba(255,255,255,.14); transition: transform .8s var(--ease); }
+  .donate-tile:hover::before { transform: scale(1.25); }
+  .donate-tile .heart { width: 44px; height: 44px; animation: beat 2.2s ease-in-out infinite; }
+  @keyframes beat { 0%, 60%, 100% { transform: scale(1); } 10% { transform: scale(1.18); } 20% { transform: scale(1); } 30% { transform: scale(1.1); } }
+  .donate-tile h2 { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; margin-bottom: 4px; }
+  .donate-tile small { opacity: .8; font-size: 14px; }
+  .go { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 10px 16px; border-radius: 999px;
+    background: rgba(255,255,255,.18); font-weight: 600; font-size: 14px; backdrop-filter: blur(6px); }
+  .go svg { width: 16px; height: 16px; transition: transform .4s var(--ease); }
+  .donate-tile:hover .go svg { transform: translateX(4px); }
+  [dir="rtl"] .go svg { transform: scaleX(-1); }
+  [dir="rtl"] .donate-tile:hover .go svg { transform: scaleX(-1) translateX(4px); }
+
+  .status { grid-area: status; } .projects { grid-area: projects; } .social { grid-area: social; }
+  .mini { display: flex; flex-direction: column; justify-content: space-between; }
+  .mini .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--tile-2); display: grid; place-items: center; color: var(--accent); }
+  .mini .ico svg { width: 20px; height: 20px; }
+  .mini h3 { font-size: 16px; font-weight: 700; }
+  .mini p { color: var(--muted); font-size: 14px; }
+  .badge { position: absolute; top: 22px; inset-inline-end: 22px; font-size: 12px; font-weight: 600; color: var(--muted);
+    padding: 4px 10px; border-radius: 999px; background: var(--tile-2); }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); position: relative; display: inline-block; }
+  .live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--ok); animation: halo 2.4s ease-out infinite; }
+  @keyframes halo { to { transform: scale(3); opacity: 0; } }
+
+  /* ---------- Donate page (bento) ---------- */
+  .back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; margin-bottom: 18px;
+    transition: color .25s, gap .35s var(--ease); }
+  .back:hover { color: var(--text); gap: 12px; }
+  .back svg { width: 16px; height: 16px; }
+  [dir="rtl"] .back svg { transform: scaleX(-1); }
+  .dgrid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+  .dhead { grid-column: 1 / -1; padding: 34px; }
+  .dhead h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin-bottom: 8px; }
+  html[lang="fa"] .dhead h1 { letter-spacing: 0; line-height: 1.4; }
+  .dhead p { color: var(--muted); }
+  .way { display: flex; flex-direction: column; gap: 22px; }
+  .way-top { display: flex; align-items: center; gap: 14px; }
+  .way-top .ico { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); flex-shrink: 0; }
+  .way-top .ico svg { width: 22px; height: 22px; }
+  .way h2 { font-size: 18px; font-weight: 700; }
+  .way p { color: var(--muted); font-size: 14px; }
+  .box { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+  .box code { display: block; direction: ltr; text-align: left; padding: 14px 16px; border-radius: 16px; background: var(--tile-2);
+    font: 400 14px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; word-break: break-all; color: var(--text); }
+  .btns { display: flex; gap: 8px; }
+  .act { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 46px; border-radius: 14px;
+    font-size: 14px; font-weight: 600; text-decoration: none; transition: transform .2s var(--ease), background-color .25s, color .25s, filter .25s; }
+  .act:active { transform: scale(.96); }
+  .act svg { width: 16px; height: 16px; }
+  .copy { background: var(--tile-2); color: var(--text); }
+  .copy:hover { background: color-mix(in srgb, var(--accent) 12%, var(--tile-2)); }
+  .copy .ic-ok { display: none; }
+  .copy.done { background: color-mix(in srgb, var(--ok) 16%, var(--tile-2)); color: var(--ok); }
+  .copy.done .ic-copy { display: none; }
+  .copy.done .ic-ok { display: block; animation: pop .4s var(--ease); }
+  .copy.done .ic-ok path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw .4s .05s var(--ease) forwards; }
+  @keyframes pop { from { transform: scale(.5); } to { transform: scale(1); } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .open { background: var(--accent); color: #fff; }
+  .open:hover { filter: brightness(1.1); }
+  .thanks { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 22px; }
+
+  footer { width: 100%; max-width: calc(var(--maxw) + 48px); margin: 0 auto; padding: 8px 24px 32px; color: var(--muted); font-size: 13px; }
+  .toast { position: fixed; left: 50%; bottom: 28px; z-index: 10; transform: translate(-50%, 16px); opacity: 0; padding: 11px 20px; border-radius: 999px;
+    background: var(--text); color: var(--bg); font-size: 14px; font-weight: 600; transition: transform .4s var(--ease), opacity .3s; pointer-events: none; }
+  .toast.show { transform: translate(-50%, 0); opacity: 1; }
+  [data-i18n] { transition: opacity .2s ease; }
+  .swap [data-i18n] { opacity: 0; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+  @media (max-width: 860px) {
+    .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "intro intro" "donate donate" "status projects" "social social"; }
+    .intro { min-height: 280px; } .donate-tile { min-height: 220px; }
+  }
+  @media (max-width: 560px) {
+    header { padding: 18px 20px; } main { padding: 0 16px; }
+    .bento { grid-template-columns: 1fr; grid-template-areas: "intro" "donate" "status" "projects" "social"; gap: 12px; }
+    .dgrid { grid-template-columns: 1fr; gap: 12px; }
+    .tile { padding: 22px; } .dhead { padding: 26px; }
+    .intro { min-height: auto; gap: 24px; } .bento { grid-auto-rows: auto; } .mini { min-height: 130px; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  /* ===== Combo: warm minimal tokens on a bento layout ===== */
+  :root {
+    --bg: #FAF8F5; --tile: #FFFFFF; --tile-2: #F4F1EC; --text: #1F1E1C; --muted: #8A857D; --line: #ECE8E2;
+    --accent: #D2643A; --accent-2: #D2643A; --ok: #3F9468; --shadow: none; --r: 20px; --maxw: 960px;
+  }
+  [data-theme="dark"] {
+    --bg: #171615; --tile: #1F1E1C; --tile-2: #282624; --text: #F4F1EC; --muted: #9C968D; --line: #2E2C29;
+    --accent: #E8845C; --accent-2: #E8845C; --ok: #6CC093; --shadow: none;
+  }
+  .tile { border: 1px solid var(--line); }
+  .tile:hover { border-color: color-mix(in srgb, var(--text) 18%, var(--line)); }
+  .round { border: 1px solid var(--line); box-shadow: none; }
+  .round:hover { border-color: var(--text); }
+  .mark { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .brand { font-weight: 600; }
+  .brand:hover .mark { transform: scale(1.6); border-radius: 50%; }
+  /* hero sits on the canvas, minimal style */
+  .intro { background: transparent; border-color: transparent; padding-inline: 4px; justify-content: flex-end; }
+  .intro:hover { border-color: transparent; }
+  .intro::after { display: none; }
+  .avatar { display: none; }
+  .hello { display: inline-flex; align-items: center; gap: 8px; }
+  .hello::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+  .intro h1 { font-weight: 700; font-size: clamp(32px, 5vw, 54px); }
+  html[lang="fa"] .intro h1 { font-weight: 800; }
+  .donate-tile { background: var(--text); color: var(--bg); border-color: transparent; isolation: isolate; }
+  .donate-tile::before { width: auto; height: auto; inset: 0; border-radius: 0; background: var(--accent); z-index: -1;
+    transform: scaleY(0); transform-origin: bottom; }
+  .donate-tile:hover { color: #fff; transform: translateY(-3px); border-color: transparent; }
+  .donate-tile:hover::before { transform: scaleY(1); }
+  .donate-tile .heart { color: var(--accent); width: 36px; height: 36px; transition: color .4s; }
+  .donate-tile:hover .heart { color: #fff; }
+  .go { background: color-mix(in srgb, currentColor 14%, transparent); }
+  .mini .ico { color: var(--text); }
+  .way-top .ico { background: var(--accent-soft, var(--tile-2)); color: var(--accent); }
+  :root { --accent-soft: #FBEDE5; } [data-theme="dark"] { --accent-soft: rgba(232,132,92,.12); }
+  .dhead { background: transparent; border-color: transparent; padding-inline: 4px; }
+  .dhead::after { display: none; }
+  .dhead h1 { font-weight: 700; }
+</style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#" data-go="home"><span class="mark"></span><span data-i18n="name"></span></a>
+    <div class="controls">
+      <button class="round" id="themeBtn" aria-label="Toggle dark mode">
+        <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <mask id="m"><rect x="-4" y="-4" width="32" height="32" fill="#fff"/><circle class="bite" cx="28" cy="0" r="6.5" fill="#000"/></mask>
+          <circle class="disc" cx="12" cy="12" r="4.5" fill="currentColor" stroke="none" mask="url(#m)"/>
+          <g class="rays"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
+        </svg>
+      </button>
+      <button class="round" id="langBtn" aria-label="Change language"><span class="lbl"></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page" id="page-home">
+      <div class="bento">
+        <div class="tile intro r" style="--i:0">
+          <div class="avatar">👋</div>
+          <div>
+            <p class="hello" data-i18n="name"></p>
+            <h1 data-i18n="headline"></h1>
+            <p data-i18n="tagline"></p>
+          </div>
+        </div>
+
+        <button class="tile donate-tile r" style="--i:1" data-go="donate">
+          <svg class="heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.7 1.1 5.2 3 1.5-1.9 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>
+          <div>
+            <h2 data-i18n="donateCardTitle"></h2>
+            <small data-i18n="donateCardSub"></small><br />
+            <span class="go"><span data-i18n="donateBtn"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </button>
+
+        <!-- 👇 کاشی‌های بعدی را اینجا اضافه/ویرایش کنید | Add or edit future tiles here -->
+        <div class="tile mini status r" style="--i:2">
+          <span class="live"></span>
+          <div><h3 data-i18n="status"></h3></div>
+        </div>
+        <div class="tile mini projects r" style="--i:3">
+          <span class="badge" data-i18n="soon"></span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></div>
+          <div><h3 data-i18n="projects"></h3><p data-i18n="projectsSub"></p></div>
+        </div>
+        <div class="tile mini social r" style="--i:4">
+          <span class="badge" data-i18n="soon"></span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 3v6h-6"/></svg></div>
+          <div><h3 data-i18n="social"></h3><p data-i18n="socialSub"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-donate">
+      <button class="back r" style="--i:0" data-go="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span data-i18n="back"></span>
+      </button>
+      <div class="dgrid">
+        <div class="tile dhead r" style="--i:1"><h1 data-i18n="donateTitle"></h1><p data-i18n="donateSub"></p></div>
+
+        <div class="tile way r" style="--i:2">
+          <div class="way-top">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+            <div><h2 data-i18n="linkTitle"></h2><p data-i18n="linkSub"></p></div>
+          </div>
+          <div class="box">
+            <code id="linkVal"></code>
+            <div class="btns">
+              <button class="act copy" data-copy="linkVal">
+                <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+                <span data-i18n="copy"></span>
+              </button>
+              <a class="act open" id="linkOpen" target="_blank" rel="noopener"><span data-i18n="open"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile way r" style="--i:3">
+          <div class="way-top">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 13h2M2 10h20M6 6V4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V6"/></svg></div>
+            <div><h2 data-i18n="addrTitle"></h2><p data-i18n="addrSub"></p></div>
+          </div>
+          <div class="box">
+            <code id="addrVal"></code>
+            <div class="btns">
+              <button class="act copy" data-copy="addrVal">
+                <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+                <span data-i18n="copy"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="thanks r" style="--i:4" data-i18n="thanks"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© <span id="yr"></span> </span><span data-i18n="name"></span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  const C = window.SITE_CONFIG, root = document.documentElement;
+  const T = {
+    fa: { title: "حمایت", donateBtn: "حمایت مالی", back: "بازگشت",
+      donateTitle: "ممنون که حمایت می‌کنی", donateSub: "هر حمایتی، هر چقدر کوچیک، انگیزه‌ی بزرگیه.",
+      linkTitle: "لینک دونیت", linkSub: "پرداخت آنلاین (برای کاربران داخل ایران)", addrTitle: "آدرس کیف پول", addrSub: "برای واریز مستقیم",
+      copy: "کپی", copied: "کپی شد", open: "باز کردن", toast: "کپی شد", thanks: "از همراهیت صمیمانه ممنونم.",
+      donateCardTitle: "راه‌های حمایت", donateCardSub: "لینک و آدرس کیف پول",
+      soon: "به‌زودی", projects: "پروژه‌ها", projectsSub: "کارهایی که ساخته‌ام", social: "ارتباط", socialSub: "شبکه‌های اجتماعی",
+      status: "در حال ساختن چیزهای تازه", hello: "سلام 👋" },
+    en: { title: "Support", donateBtn: "Donate", back: "Back",
+      donateTitle: "Thanks for the support", donateSub: "Every support, however small, is a big motivation.",
+      linkTitle: "Donation link", linkSub: "Pay online (For users in Iran)", addrTitle: "Wallet Address", addrSub: "For a direct transfer",
+      copy: "Copy", copied: "Copied", open: "Open", toast: "Copied to clipboard", thanks: "Thank you, sincerely.",
+      donateCardTitle: "Ways to support", donateCardSub: "Donation link & Wallet Address",
+      soon: "Soon", projects: "Projects", projectsSub: "Things I've built", social: "Connect", socialSub: "Social links",
+      status: "Building new things", hello: "Hello 👋" }
+  };
+  let lang = root.lang;
+
+  function applyLang() {
+    const t = T[lang];
+    root.lang = lang; root.dir = lang === "fa" ? "rtl" : "ltr";
+    document.title = C.name[lang] + " — " + t.title;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const k = el.dataset.i18n;
+      el.textContent = C[k] ? C[k][lang] : (t[k] ?? "");
+    });
+    document.querySelector("#langBtn .lbl").textContent = lang === "fa" ? "EN" : "فا";
+    localStorage.setItem("lang", lang);
+    const u = new URL(location.href); u.searchParams.set("lang", lang);
+    history.replaceState(history.state, "", u);
+  }
+  document.getElementById("langBtn").addEventListener("click", e => {
+    const b = e.currentTarget;
+    b.classList.add("flip"); document.body.classList.add("swap");
+    setTimeout(() => { lang = lang === "fa" ? "en" : "fa"; applyLang();
+      b.classList.remove("flip"); document.body.classList.remove("swap"); }, 200);
+  });
+
+  function setTheme(t) {
+    root.setAttribute("data-theme", t); localStorage.setItem("theme", t);
+    const m = document.querySelector('meta[name="theme-color"]');
+    m.content = getComputedStyle(root).getPropertyValue("--bg").trim();
+  }
+  document.getElementById("themeBtn").addEventListener("click", e => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    if (!document.startViewTransition || matchMedia("(prefers-reduced-motion: reduce)").matches) return setTheme(next);
+    const r = e.currentTarget.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(() => setTheme(next)).ready.then(() =>
+      root.animate({ clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] },
+        { duration: 550, easing: "cubic-bezier(.2,.8,.2,1)", pseudoElement: "::view-transition-new(root)" }));
+  });
+
+  let cur = null;
+  function show(name) {
+    const next = document.getElementById("page-" + name);
+    if (next === cur) return;
+    const prev = cur; cur = next;
+    const go = () => {
+      if (prev) prev.classList.remove("active", "in", "out");
+      next.classList.remove("in"); void next.offsetWidth;
+      next.classList.add("active", "in"); scrollTo({ top: 0 });
+    };
+    prev ? (prev.classList.add("out"), setTimeout(go, 230)) : go();
+  }
+  const route = () => show(location.hash === "#donate" ? "donate" : "home");
+  addEventListener("hashchange", route);
+  addEventListener("popstate", route);
+  document.querySelectorAll("[data-go]").forEach(el => el.addEventListener("click", e => {
+    e.preventDefault();
+    if (el.dataset.go === "donate") location.hash = "donate";
+    else { if (location.hash) history.pushState(null, "", location.pathname + location.search); route(); }
+  }));
+
+  document.getElementById("linkVal").textContent = C.donateLink;
+  document.getElementById("linkOpen").href = C.donateLink;
+  document.getElementById("addrVal").textContent = C.donateAddress;
+  const yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
+
+  const toast = document.getElementById("toast"); let tt;
+  document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
+    const text = document.getElementById(btn.dataset.copy).textContent;
+    try { await navigator.clipboard.writeText(text); }
+    catch { const a = document.createElement("textarea"); a.value = text; document.body.append(a); a.select(); document.execCommand("copy"); a.remove(); }
+    const lbl = btn.querySelector("[data-i18n]");
+    btn.classList.add("done"); lbl.textContent = T[lang].copied;
+    toast.textContent = T[lang].toast; toast.classList.add("show");
+    clearTimeout(tt); tt = setTimeout(() => toast.classList.remove("show"), 1600);
+    setTimeout(() => { btn.classList.remove("done"); lbl.textContent = T[lang].copy; }, 1600);
+  }));
+
+  /* spotlight for tiles (bento) */
+  document.querySelectorAll(".tile").forEach(c => c.addEventListener("pointermove", e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px");
+  }));
+
+  setTheme(root.dataset.theme);
+  applyLang(); route();
+})();
+
+</script>
+</body>
+</html>
